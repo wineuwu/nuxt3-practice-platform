@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white pt-28">
+  <div class="bg-white flex    items-center">
     <div
-      class="border rounded flex flex-col  mx-auto shadow text-base pt-5 w-[450px] items-center"
+      class="border rounded flex flex-col mx-auto  shadow  text-base pt-5 w-[450px] items-center"
     >
       <div class="border-b text-center w-full">
         <span class="cursor-pointer border-b-2 py-2 px-5 inline-block" 
@@ -74,8 +74,7 @@ import IconUser from '~icons/mdi/user-circle';
 import IconLock from '~icons/material-symbols/lock';
 import IconGoogle from '~icons/logos/google-icon';
 import IconEmail from '~icons/ic/baseline-email';
-
-
+import mainStore  from '@/store'
 import { googleTokenLogin } from 'vue3-google-login';
 
 const runtimeConfig = useRuntimeConfig()
@@ -98,10 +97,22 @@ const handleGoogleLogin = async() => {
     },
     initialCache: false
   })
- 
-  userInfo.value = data.value
+  
+  const router = useRouter();
+  const $store = mainStore();
+  
+
+  if(data.value.id){
+    console.log(data.value)
+    await $store.updateMemberData(data.value)
+    await router.push({ path: "/redirect" });
+  }
+
+
   // console.log(data.value.avatar)
 }
+
+
 
 const currentStatus = ref("login");
 const status = ["rigister", "login"];
