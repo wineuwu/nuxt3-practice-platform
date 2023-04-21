@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white flex    items-center">
+  <div class="bg-white flex items-center">
     <div
       class="border rounded flex flex-col mx-auto  shadow  text-base pt-5 w-[450px] items-center"
     >
@@ -103,7 +103,7 @@ const handleGoogleLogin = async() => {
   
 
   if(data.value.id){
-    console.log(data.value)
+    
     await $store.updateMemberData(data.value)
     await router.push({ path: "/redirect" });
   }

@@ -13,7 +13,6 @@ const useStore = defineStore("main", {
   actions: {
     updateMemberData(res) {
       const $store = this;
-      console.log(res)
       $store.memberInfo = {...res};
       $store.isLogin = true;
       console.log('store', $store.memberInfo)
