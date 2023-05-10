@@ -1,12 +1,17 @@
 <template>
-
+ 
 </template>
 
-<script>
-export default {
- setup (){},
-};
+<script setup>
+
+
+onMounted(async() => { 
+  let res = await useFetch('/api/member');
+  console.log(res.value)
+})
+  
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+
 </style>
